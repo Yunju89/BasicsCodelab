@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
@@ -49,11 +50,9 @@ fun Greetings(names: List<String> = List(100) { "$it" }) {    // it : index 값
     Surface(color = MaterialTheme.colors.background) {
         Column(modifier = Modifier.padding(vertical = 4.dp)) {
             LazyColumn {                                                              // 현재 화면 안에 있는 컴포저블만 랜더링
-                item { Text("Header") }
                 items(names) {name ->
                     Greeting(name = name)
                 }
-                item { Text("Bottom") }
             }
         }
     }
@@ -92,7 +91,7 @@ fun Greeting(name: String) {
             }
 
             OutlinedButton(onClick = { expanded.value = !expanded.value }) {
-                Text(if (expanded.value) "Show Less" else "Show more")
+                Text(if (expanded.value) stringResource(id = R.string.show_less) else stringResource(id = R.string.show_more))
             }
         }
     }
@@ -116,15 +115,15 @@ fun OnboardingScreen(
         }
     }
 }
-@Preview(showBackground = true, widthDp = 320, heightDp = 320, uiMode = UI_MODE_NIGHT_YES)
-@Preview(showBackground = true, widthDp = 320, heightDp = 320)
-@Composable
-fun OnboardingPreview() {
-    BasicsCodelabTheme {
-        OnboardingScreen(onContinueClicked = {})
-    }
-}
-
+//@Preview(showBackground = true, widthDp = 320, heightDp = 320, uiMode = UI_MODE_NIGHT_YES)
+//@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+//@Composable
+//fun OnboardingPreview() {
+//    BasicsCodelabTheme {
+//        OnboardingScreen(onContinueClicked = {})
+//    }
+//}
+@Preview(showBackground = true, widthDp = 320, uiMode = UI_MODE_NIGHT_YES)
 @Preview(showBackground = true, widthDp = 320)
 @Composable
 fun DefaultPreview() {
